@@ -1,0 +1,35 @@
+<div class="panel header-panel flow-text z-depth-3">
+  <div id="title">Wszystkie zamówienia</div>
+</div>
+<div class="full-height scroll-bar">
+  <table class="striped">
+    <thead>
+    <tr>
+
+      <th>ID</th>
+      <th>Imię</th>
+      <th>Razem</th>
+      <th>Złożone</th>
+
+      <th> Zmiana statusu </th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.first_name%></td>
+        <td><%= order.total || 0.0 %>PLN </td>
+        <td><%= time_ago_in_words(order.created_at) + " temu"%></td>
+<%= form_for order, :url => {:controller => 'administrator', :action => 'update', order_id: order.id, status: order.Status }, method: :patch  do |f| %>
+    <td>     <%= f.select :Status, options_for_status, selected: order.Status %></td>
+    <td><%= f.submit "Potwierdź" %></td>
+  <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

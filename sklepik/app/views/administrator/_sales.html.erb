@@ -1,0 +1,49 @@
+<div class="panel header-panel flow-text z-depth-3">
+  <div id="title">Wszystkie promocje</div>
+</div>
+<div class="full-height scroll-bar">
+<div class="body">
+    <table class="striped">
+    <thead>
+      <tr>
+          <th data-field="id">Nazwa</th>
+          <th data-field="name">Opis</th>
+          <th data-field="price">Cena produktu</th>
+          <th data-field="category">Kategoria</th>
+          <th data-field="status">Status</th>
+          <th data-field="new_price">Nowa cena</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |food| %>
+        <a href = "/>">
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.description %></td>
+          <td><%= food.price %></td>
+          <td><%= !food.category.nil? ? food.category.title : "none yet" %></td>
+          <td>
+            <%= button_to "Usuń", {}, :class => "remove_from_sale", "data-message" => food.id %>
+          </td>
+          <td><%= food.sales[:price]%></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <div class="footer">
+    <div class="row">
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large red" href="/sales/new">
+          <i class="large material-icons">add</i>
+        </a>
+        <ul>
+          <li><a href="/sales/new" class="btn-floating yellow darken-1"><i class="material-icons">settings_input_svideo</i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

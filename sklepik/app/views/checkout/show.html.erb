@@ -1,0 +1,16 @@
+<div class="full-height scroll-bar">
+  <div class="pad-bottom">
+    <h3>Potwierdź zamówienie</h3>
+    <% if @current_order.ordered_items.length == 0 %>
+        <p>Twój koszyk nadal jest pusty. W czym problem?</p>
+    <% else %>
+      <%= render "orders/current_order" %>
+    <div>
+      <%= link_to 'Powrót', carts_path, :class => "btn btn-success in-line left" %>
+      <%= button_to 'Zapłać', @current_order.paypal_url(@current_user, payment_completed_url), :class => "btn btn-success in-line left" %>
+    </div>
+    <% end %>
+  </div>
+
+
+</div>

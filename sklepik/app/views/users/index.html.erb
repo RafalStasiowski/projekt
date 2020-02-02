@@ -1,0 +1,20 @@
+
+
+<% if current_user %>
+							
+							<div class="col s10">
+								<span class="">
+
+									<%= current_user.first_name %> jest zalogowany/a
+
+									<ul id="dropdown1" class="dropdown-content">
+										<li><i class="material-icons left">perm_identity</i><%= link_to "Mój profil", user_path(current_user.id) %></li>
+										<li><a href="#!"><i class="material-icons left">settings</i>Ustawienia</a></li>
+										<li class="divider"></li>
+										<li><a href="#!"><i class="material-icons left"></i><%= link_to "Wyloguj", logout_path, method: :delete %></a></li>
+									</ul>
+								</span>
+							</div>
+						<% else %>
+							<div><%= link_to "Zaloguj się", login_path, :class =>"in-line" %> | <%= link_to "Zarejestruj się", new_user_path, :class =>"in-line" %></div>
+						<% end %>

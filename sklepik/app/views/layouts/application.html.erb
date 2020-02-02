@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ślońsko Kuchnia</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= stylesheet_link_tag    "#{@current_theme}-theme/welcome", media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  	<div class="background">
+      <%= render 'layouts/header' %>
+      <main>
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </main><!--End of main-->
+      <%= render 'layouts/footer' %>
+    </div><!-- end of container main-->
+</body>
+</html>

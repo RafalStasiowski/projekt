@@ -1,0 +1,57 @@
+<div class="row full-height">
+ <%=render 'layouts/category' %>
+ <div class="col s9 full-height scroll-bar">
+   <div class="panel header-panel flow-text z-depth-3"><%= (!@category.nil?) ? @category.title : "Wszystkie potrawy"  %></div>
+  <div class="row"> <% @foods = (!@category.nil?) ? @category.foods : @foods  %>
+  <% @foods.each do |food| %>
+      <div class="col s13 m1 l6">
+        <div class="card">
+          <div class="card-image">
+          <% if food.sales[:status] %>
+            <span class="price-tag"><s> PLN<%= food.price%></s></span>
+            <span class="price-tag">Promocja! PLN<%= food.sales[:price]%></span>
+          <% else %>
+            <span class="price-tag">PLN<%= food.price%></span>
+          <% end %>
+            <span class="activator"><i class="material-icons right">more_vert</i></span>
+            <%= link_to(food) do %>
+              <%= image_tag((food.food_image.url), :width => "100%", :height => "auto", :style => "max-width:100%", :class => "image-thumb", :alt => "food") %>
+              <span class="card-title"><%= food.name %></span>
+            <% end %>
+          </div>
+                  <% if logged_in? %>
+
+              
+
+          <div class="card-action">
+            <div class="right"><i class="material-icons left no-right-margin"></i></div>
+            <% if food.status == "available" %>
+
+              <%= button_to "Dodaj do koszyka", cart_items_path(food_id: food.id) %>
+            <% else %>
+              <p>Brak :(</p>
+
+            <% end %>
+            <% else %>
+            <div class="card-action">
+            <div class="right"><i class="material-icons left no-right-margin"></i></div>
+
+            <%end %>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= food.name%><i class="material-icons right">close</i></span>
+            <% if food.sales[:status] %>
+            <p><s><%= food.price%></s></p>
+            <p> Nowa cena: <%= food.sales[:price]%></p>
+            <% else %>
+            <p><%= food.price%> PLN</p>
+            <% end %>
+            <p><%= food.description%></p>
+          </div>
+        </div>
+      </div>
+
+  <% end %>
+  </div>
+ </div>
+</div>

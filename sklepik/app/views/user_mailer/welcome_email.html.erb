@@ -1,0 +1,6 @@
+<div class="mailer" style="border: 1px solid black; padding: 10px; margin: 30px 100px; text-align: center">
+<%= image_tag attachments['logo3.png'].url, :width => "100px", "max-height" => "50px"  %>
+  <h1><%= "Dear #{@user.first_name}," %>
+  <p>Zarejestrowałeś/aś się do ślązaczka.pl</p>
+  <p>Dziękujemy za dołączenie do<%= link_to "Ślązaczka", root_url %> </p>
+</div>

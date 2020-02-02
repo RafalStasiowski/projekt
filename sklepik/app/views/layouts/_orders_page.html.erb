@@ -1,0 +1,30 @@
+<div class="panel header-panel flow-text z-depth-3">
+  <div id="title">Wszystkie zamówienia</div>
+</div>
+<div class="full-height scroll-bar">
+  <table class="striped">
+    <thead>
+    <tr>
+
+      <th>ID</th>
+      <th>Imię</th>
+      <th>Razem</th>
+      <th>Złożone</th>
+
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.first_name%></td>
+        <td><%= order.total || 0.0 %>PLN </td>
+        <td><%= time_ago_in_words(order.created_at) + " temu"%></td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

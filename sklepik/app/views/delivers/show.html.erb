@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @deliver.id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deliver.name %>
+</p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @deliver.car %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @deliver.phone %>
+</p>
+
+<%= link_to 'Edit', edit_deliver_path(@deliver) %> |
+<%= link_to 'Back', delivers_path %>

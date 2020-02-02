@@ -1,0 +1,65 @@
+<header >
+	<div class="row">
+		<div class="col s12">
+			<%= image_tag("logo2.png", :alt => "logo", :class => "img-logo") %>
+			<nav class="z-depth-3 table-top">
+				<div class="nav-wrapper">
+					<a href="/" class="brand-logo">
+						Ślązaczka
+					</a>
+					<ul class="right hide-on-med-and-down">
+					
+<%  if admin? %>
+					<li><a href="/administrator/users"><i class="material-icons left">settings_input_svideo</i>Ustawienia</a></li>
+
+						<li><a href="/foods"><i class="material-icons left">settings_input_svideo</i>Menu</a></li>
+						<li><a href="/about/about"><i class="material-icons left">settings_phone</i>Znajdź nas</a></li>
+						<% else %>
+              <li><a href="/foods"><i class="material-icons left">settings_input_svideo</i>Menu</a></li>
+              <li><a href="/about/about"><i class="material-icons left">settings_phone</i>Znajdź nas</a></li>
+              <% end  %>
+<% if logged_in? %>
+						<li class="cart-holder <%= cart_properties['status'] %>">
+							<%= link_to carts_path, class: "cart left no_left_pad", id: "cart"  do %>
+
+							 		<i class="material-icons left">shopping_cart</i><%= cart_properties['items_count'] %>
+
+							 <% end %>
+							 <% else %>
+							 
+
+							 <%= link_to login_path, class: "cart left no_left_pad"  do %>
+
+
+						<% end %>
+						<% end %>
+
+						</li>
+						<li>
+						<% if current_user %>
+
+                <%= link_to "Mój profil", user_path(current_user.id) %>
+
+
+
+                <div class="">
+
+
+							</div>
+						<% else %>
+							<div><%= link_to "Zaloguj", login_path, :class =>"in-line" %> | <%= link_to "Załóż konto", new_user_path, :class =>"in-line" %></div>
+						<% end %>
+						</li>
+						
+						
+						
+					</ul>
+
+					
+						<!-- Dropdown Trigger -->
+						
+				</div>
+			</nav>
+		</div>
+	</div>
+</header>

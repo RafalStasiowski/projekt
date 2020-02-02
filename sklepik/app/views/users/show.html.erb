@@ -1,0 +1,26 @@
+<div class="row full-height">
+  <% if @user %>
+    <div class="col s4 full-height scroll-bar profile_left_tab">
+      <div class="card medium">
+        
+        <div class="card-content">
+          <p>Imie i nazwisko: <%= @user.first_name %> <%= @user.last_name %></p>
+          <p>Email: <%= @user.email %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to "Edytuj Profil", edit_user_path(@user.id)  %>
+        <!-- </div> -->
+        <!-- <div class="card-action"> -->
+        <%= link_to "Wyświetl zamówienia", :args => { :show_all => true , :title => " Wszystkie zamówienia"} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s8">
+      <h4 class="order_header"><%= @title %></h4>
+        <%= render "layouts/orders_page" %>
+    </div>
+  <% else %>
+    <div class="container">Brak użytkownika</div>
+  <% end %>
+</div>
